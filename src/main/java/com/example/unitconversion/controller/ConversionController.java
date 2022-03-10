@@ -19,7 +19,7 @@ public class ConversionController {
     }
 
     @PostMapping("/api/convert")
-    public Response convert(@RequestBody @Valid Request request) {
+    public Response convert(@RequestBody @Valid Request request) throws Exception {
         return unitConversionService.convert(request);
     }
 }

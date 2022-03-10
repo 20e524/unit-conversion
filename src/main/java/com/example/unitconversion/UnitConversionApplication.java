@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class UnitConversionApplication {
 
     public static void main(String[] args) {
-        //SpringApplication.run(UnitConversionApplication.class, args);
+        SpringApplication.run(UnitConversionApplication.class, args);
 
 
     }

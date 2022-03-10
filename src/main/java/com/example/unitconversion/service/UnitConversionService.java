@@ -22,14 +22,18 @@ public class UnitConversionService {
                 .collect(Collectors.toMap(ConversionStrategy::getConversionCode, Function.identity()));
     }
 
-    public Response convert(Request request) {
+    public Response convert(Request request) throws Exception {
         Float fromValue = request.getFromValue();
         String fromType = request.getFromType();
         String toType = request.getToType();
 
         String lookForConversionCode = fromType + " to " + toType;
         ConversionStrategy conversionStrategy = servicesByConversionCode.get(lookForConversionCode);
-        float result = conversionStrategy.execute(fromValue, fromType, toType);
-        return new Response (result, fromValue, fromType, toType);
+        try {
+            float result = conversionStrategy.execute(fromValue, fromType, toType);
+            return new Response (result, fromValue, fromType, toType);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }
