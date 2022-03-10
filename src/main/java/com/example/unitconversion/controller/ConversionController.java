@@ -20,10 +20,6 @@ public class ConversionController {
 
     @PostMapping("/api/convert")
     public Response convert(@RequestBody @Valid Request request) {
-        Float fromValue = request.getFromValue();
-        String fromType = request.getFromType();
-        String toType = request.getToType();
-        float result = unitConversionService.convert(fromValue, fromType, toType);
-        return new Response(result, fromValue, fromType, toType);
+        return unitConversionService.convert(request);
     }
 }

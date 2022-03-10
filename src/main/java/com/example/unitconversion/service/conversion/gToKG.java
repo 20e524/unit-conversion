@@ -1,4 +1,4 @@
-package com.example.unitconversion.conversion;
+package com.example.unitconversion.service.conversion;
 
 import com.example.unitconversion.strategy.ConversionStrategy;
 import org.springframework.stereotype.Service;
