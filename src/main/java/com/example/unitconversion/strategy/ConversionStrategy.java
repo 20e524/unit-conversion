@@ -4,6 +4,5 @@ public interface ConversionStrategy {
 
     String getConversionCode();
 
-    float execute(Float fromValue, String fromType, String toType);
-
+    float execute(Float fromValue, String fromType, String toType) throws Exception;
 }
