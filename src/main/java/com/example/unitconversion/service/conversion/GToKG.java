@@ -18,7 +18,7 @@ public class GToKG implements ConversionStrategy {
     @Override
     public float execute(Float fromValue, String fromType, String toType) throws Exception {
         if (fromValue <= 0) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "From value must be greater than 0!");
         }
         return fromValue / 1000;
     }
