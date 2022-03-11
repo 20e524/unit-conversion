@@ -20,13 +20,13 @@ class KgToGTest {
         assertEquals("kg to g", kgToG.getConversionCode());
     }
 
-    @Test //the test passes even if the from and to Type are completely wrong
+    @Test
     void executeKgToG() throws Exception {
         assertEquals(2000f, kgToG.execute(2f, "kg", "g"));
     }
 
     @Test
-    void executeKgToGWithComma() throws Exception {
+    void executeKgToGWithCommaValue() throws Exception {
         assertEquals(2123.456f, kgToG.execute(2.123456f, "kg", "g"));
     }
 
