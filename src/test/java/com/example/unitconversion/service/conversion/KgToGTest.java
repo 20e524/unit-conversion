@@ -20,7 +20,7 @@ class KgToGTest {
         assertEquals("kg to g", kgToG.getConversionCode());
     }
 
-    @Test //the test passes even if the from and to Type are completely wrong?
+    @Test //the test passes even if the from and to Type are completely wrong
     void executeKgToG() throws Exception {
         assertEquals(2000f, kgToG.execute(2f, "kg", "g"));
     }
@@ -31,13 +31,13 @@ class KgToGTest {
     }
 
     @Test
-    void executeKgToGWithNegativeValue() throws Exception { //why don't I need the throws Exception here?
+    void executeKgToGWithNegativeValue() throws Exception {
         assertThrows(ResponseStatusException.class,
         () -> kgToG.execute(-2f, "kg", "g"), "value < 0 throw Exception");
     }
 
     @Test
-    void executeKgToGWithZeroValue() { //why don't I need the throws Exception here?
+    void executeKgToGWithZeroValue() throws Exception {
         assertThrows(ResponseStatusException.class,
                 () -> kgToG.execute(0f, "kg", "g"), "value == 0 throw Exception");
     }
