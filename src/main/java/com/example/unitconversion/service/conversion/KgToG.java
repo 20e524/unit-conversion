@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
-public class GToKG implements ConversionStrategy {
+public class KgToG implements ConversionStrategy {
 
-    private final static String CONVERSIONCODE = "g to kg";
+    private final static String CONVERSIONCODE = "kg to g";
 
     @Override
     public String getConversionCode() {
@@ -18,8 +18,8 @@ public class GToKG implements ConversionStrategy {
     @Override
     public float execute(Float fromValue, String fromType, String toType) throws Exception {
         if (fromValue <= 0) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "From value must be greater than 0!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "from value must be greater than 0!");
         }
-        return fromValue / 1000;
+        return fromValue * 1000;
     }
 }
