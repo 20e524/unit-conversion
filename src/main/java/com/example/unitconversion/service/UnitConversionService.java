@@ -31,7 +31,7 @@ public class UnitConversionService {
 
         String lookForConversionCode = fromType + " to " + toType;
         if (!servicesByConversionCode.containsKey(lookForConversionCode)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Input type combination does not exists");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Input type combination does not exist");
         }
         ConversionStrategy conversionStrategy = servicesByConversionCode.get(lookForConversionCode);
         try {
