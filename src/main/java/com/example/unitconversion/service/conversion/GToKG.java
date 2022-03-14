@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+// taken and adapted from: <https://www.baeldung.com/spring-dynamic-autowire>
 @Service
 public class GToKG implements ConversionStrategy {
 
