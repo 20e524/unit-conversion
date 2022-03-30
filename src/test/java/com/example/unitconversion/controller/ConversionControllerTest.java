@@ -27,7 +27,27 @@ class ConversionControllerTest {
                 post("/api/convert/")
                         .content(jsonRequest)
                         .header(HttpHeaders.CONTENT_TYPE, "application/json")
-        ).andExpect(status().isOk());
+        )
+                .andExpect(
+                        status()
+                                .isOk()
+                );
+
+    }
+
+    @Test
+    void returnsNotOk() throws Exception {
+        String jsonRequest = "{\"fromValue\":10,\"fromType\":\"something-else\", \"toType\":\"g\"}";
+
+        this.mockMvc.perform(
+                        post("/api/convert/")
+                                .content(jsonRequest)
+                                .header(HttpHeaders.CONTENT_TYPE, "application/json")
+                )
+                .andExpect(
+                        status()
+                                .is4xxClientError()
+                );
 
     }
 
