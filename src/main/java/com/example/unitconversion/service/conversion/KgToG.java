@@ -5,16 +5,33 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * This class implements the ConversionStrategy and provides the attributes and methods to convert Kilogram to Gram
+ */
 @Service
 public class KgToG implements ConversionStrategy {
 
     private final static String CONVERSIONCODE = "kg to g";
 
+    /**
+     * This method returns the private final static String CONVERSIONCODE which the UnitConversionService needs to implement the corresponding class
+     *
+     * @return the conversioncode which consists ou auf the fromType followed by " to " and the toType
+     */
     @Override
     public String getConversionCode() {
         return CONVERSIONCODE;
     }
 
+    /**
+     * This method does the calculation necessary to convert a Kilogram value to a Gram value and return it
+     *
+     * @param fromValue The value which will be converted
+     * @param fromType The type of the current value, in this case KG
+     * @param toType The type of the demanded conversion value, in this case G
+     * @return The converted value
+     * @throws Exception An Exception is being thrown if the value is equal or lower than 0
+     */
     @Override
     public float execute(Float fromValue, String fromType, String toType) throws Exception {
         if (fromValue <= 0) {
