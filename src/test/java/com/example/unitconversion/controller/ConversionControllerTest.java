@@ -7,7 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -21,17 +25,25 @@ class ConversionControllerTest {
 
     @Test
     void returnsOk() throws Exception {
-        String jsonRequest = "{\"fromValue\":10,\"fromType\":\"kg\", \"toType\":\"g\"}";
+        List<String> jsonRequests = new ArrayList<>();
+        jsonRequests.add("{\"fromValue\":10,\"fromType\":\"kg\", \"toType\":\"g\"}");
+        jsonRequests.add("{\"fromValue\":10,\"fromType\":\"g\", \"toType\":\"kg\"}");
+        jsonRequests.add("{\"fromValue\":10,\"fromType\":\"F\", \"toType\":\"C\"}");
+        jsonRequests.add("{\"fromValue\":10,\"fromType\":\"C\", \"toType\":\"F\"}");
 
-        this.mockMvc.perform(
-                post("/api/convert/")
-                        .content(jsonRequest)
-                        .header(HttpHeaders.CONTENT_TYPE, "application/json")
-        )
-                .andExpect(
-                        status()
-                                .isOk()
-                );
+        for (String jsonRequest : jsonRequests) {
+            this.mockMvc.perform(
+                            post("/api/convert/")
+                                    .content(jsonRequest)
+                                    .header(HttpHeaders.CONTENT_TYPE, "application/json")
+                    )
+                    .andExpect(
+                            status()
+                                    .isOk()
+                    );
+        }
+
+
 
     }
 
